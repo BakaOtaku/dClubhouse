@@ -3,8 +3,9 @@ import Head from 'next/head';
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../utils/theme";
-import User from "./../contexts/userContext";
+import theme from "@utils/theme";
+import Neo from "@contexts/neoContext";
+import User from "@contexts/userContext";
 
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
@@ -23,9 +24,11 @@ const App = ({ Component, pageProps }) => {
       </Head>
       <CssBaseline />
 
-      <User>
-        <Component {...pageProps} />
-      </User>
+      <Neo>
+        <User>
+          <Component {...pageProps} />
+        </User>
+      </Neo>
     </ThemeProvider>
   );
 }

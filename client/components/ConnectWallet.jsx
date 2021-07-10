@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 
-// import { useWeb3Context } from '../contexts/Web3Context';
+import { neoContext } from "@contexts/neoContext";
 
 const ConnectWallet = () => {
   const classes = useStyles();
-  // const { connectWeb3, disconnect, account, providerChainId } = useWeb3Context();
+  const { address } = useContext(neoContext);
+
+  const getNeo = () => {
+    window.open("https://chrome.google.com/webstore/detail/neoline/cphhlgmgameodnhkjdmkpanlelnlohao")
+  }
 
   return (
     <button
       className={classes.walletBtn}
-      // onClick={account ? disconnect : connectWeb3}
-      >
+      onClick={address ? null : getNeo}
+    >
       <div>
-        {/* {account ? truncateAddress("NdfY7Wr6K29GTyu3CySLASBhjYLVXnhqrP") : "Connect Wallet"} */}
-        {truncateAddress("NdfY7Wr6K29GTyu3CySLASBhjYLVXnhqrP")}
+        {address ? truncateAddress(address) : "Connect Neo Wallet"}
       </div>
     </button>
   );
@@ -33,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 36,
     height: '36px',
     lineHeight: '36px',
-    padding: '0 18px 0 8px',
     display: 'flex',
     alignItems: 'center',
 
