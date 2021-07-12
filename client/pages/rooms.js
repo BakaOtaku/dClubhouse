@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import Link from 'next/link';
 import Head from 'next/head';
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 
 import Navbar from "@components/Navbar"
+import { neoContext } from "@contexts/neoContext";
 
 const Rooms = () => {
   const classes = useStyles();
+  const { isAuth } = useContext(neoContext);
+  useEffect(() => {
+    if (!isAuth) {
+      window.location = "/";
+    }
+  }, [isAuth])
 
   return (
     <React.Fragment>
@@ -23,24 +31,18 @@ const Rooms = () => {
 
         <div className={classes.roomList}>
           <div className={classes.room}>
-            <h1 className={classes.roomTitle}>Bada sa room ka name sdgvsbgmvbsdmvbfs asccsaccvbcvndcvb</h1>
+            <h1 className={classes.roomTitle}>Hackathon discussion</h1>
+            <Link href="rooms/60ec9b49bd70336e3cabb22a">
+              <Button className={classes.btn} >🌱 Join Room</Button>
+            </Link>
+          </div>
+          <div className={classes.room}>
+            <h1 className={classes.roomTitle}>Fun Channel</h1>
             <Button className={classes.btn} >🌱 Join Room</Button>
           </div>
           <div className={classes.room}>
-            <h1 className={classes.roomTitle}>Chta name</h1>
+            <h1 className={classes.roomTitle}>Games</h1>
             <Button className={classes.btn} >🌱 Join Room</Button>
-          </div>
-          <div className={classes.room}>
-            <h1 className={classes.roomTitle}>small mai name</h1>
-            <Button className={classes.btn} >🌱 Join Room</Button>
-          </div>
-          <div className={classes.room}>
-            <h1 className={classes.roomTitle}>lmaolmao</h1>
-            <Button className={classes.btn} >🌱 Join Room</Button>
-          </div>
-          <div className={classes.room}>
-          </div>
-          <div className={classes.room}>
           </div>
         </div>
       </section>

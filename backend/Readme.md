@@ -16,3 +16,9 @@ MONGO_DB=clubhouse
 docker build -t back .
 docker run -p 80:80
 ```
+
+Project Flow
+
+```
+simple flow just make rooms and save id in mongodb
+```

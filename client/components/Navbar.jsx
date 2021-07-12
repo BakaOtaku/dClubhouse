@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useContext, useRef } from "react";
 import Link from 'next/link';
 import { useRouter } from "next/router";
 
@@ -9,10 +9,12 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // components
 import ConnectWallet from "./ConnectWallet";
+import { neoContext } from "@contexts/neoContext";
 
 const Navbar = () => {
   const classes = useStyles();
   const router = useRouter();
+  const { isAuth } = useContext(neoContext);
 
   // to toggle the menu
   const [openMenu, setOpenMenu] = useState(false);
@@ -34,18 +36,39 @@ const Navbar = () => {
           </Link>
 
           <div style={{ display: "flex" }}>
-            <div className={classes.menuItemContainer} ref={menuItemContainerRef}>
-              <Link href="/rooms">
-                <a className={router.pathname == "/rooms" ? "menuItem active" : "menuItem"}>
-                  All Rooms
-                </a>
-              </Link>
-              <Link href="#">
-                <a className={router.pathname == "/account" ? "menuItem active" : "menuItem"}>
-                  Account
-                </a>
-              </Link>
-            </div>
+            {isAuth &&
+              <div className={classes.menuItemContainer} ref={menuItemContainerRef}>
+                <Link href="/">
+                  <a className={router.pathname == "/" ? "menuItem active" : "menuItem"}>
+                    Home
+                  </a>
+                </Link>
+                <Link href="/rooms">
+                  <a className={router.pathname == "/rooms" ? "menuItem active" : "menuItem"}>
+                    All Rooms
+                  </a>
+                </Link>
+                <Link href="/wallet">
+                  <a className={router.pathname == "/wallet" ? "menuItem active" : "menuItem"}>
+                    Wallet
+                  </a>
+                </Link>
+              </div>
+            }
+            {!isAuth &&
+              <div className={classes.menuItemContainer} ref={menuItemContainerRef}>
+                <Link href="/">
+                  <a className={router.pathname == "/" ? "menuItem active" : "menuItem"}>
+                    Home
+                  </a>
+                </Link>
+                <Link href="/account">
+                  <a className={router.pathname == "/account" ? "menuItem active" : "menuItem"}>
+                    Register
+                  </a>
+                </Link>
+              </div>
+            }
 
             <ConnectWallet />
 

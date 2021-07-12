@@ -4,12 +4,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { userContext } from "@contexts/userContext";
 import Navbar from "@components/Navbar";
+import { neoContext } from "@contexts/neoContext";
 import { Button } from "@material-ui/core";
 
 const Index = () => {
   const classes = useStyles();
   const router = useRouter();
   const { setUser } = useContext(userContext);
+  const { isAuth } = useContext(neoContext);
   const [isLoading, setIsLoading] = useState(false);
 
   const createRoom = async (e) => {
@@ -42,17 +44,16 @@ const Index = () => {
     <React.Fragment>
       <Navbar />
       <section className={classes.boxContainer}>
-        <h1 className={classes.title}>dClubhouse</h1>
+        <h1 className={classes.title}>Cattery</h1>
         <hr className={classes.break} />
         <div className={classes.desc}>
           <div className={classes.descText}>
-            Change kr denge apne project desc ke hisab se.
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
-            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type 
+            Cattery is a decentralised Clubhouse dynamic NFT based membership dapp. This allows decentralised membership based platform for Clubhouse where even users can join even with anonymity.
             <br />
-            <Button className={classes.btn} onClick={createRoom}>
+            {isAuth && <Button className={classes.btn} onClick={createRoom}>
               {isLoading ? 'Loading...' : '🌱 Start room'}
-            </Button>
+            </Button>}
+            {!isAuth && <Button className={classes.btn} onClick={createRoom}>Join Now</Button>}
           </div>
           <img className={classes.descImg} src="/cattery.svg" />
         </div>
@@ -89,14 +90,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 17,
     color: "#EEEEEE",
     fontWeight: 400,
-    padding: "30px 30px 0 0",
+    padding: "30px 10px 0 0",
     ["@media (max-width:599px)"]: {
       padding: "25px 0",
     }
   },
   descImg: {
-    width: 200,
-    height: 200,
+    width: 250,
+    height: 250,
     ["@media (max-width:599px)"]: {
       margin: "auto",
     },

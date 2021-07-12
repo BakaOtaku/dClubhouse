@@ -14,17 +14,17 @@ const ConnectWallet = () => {
   return (
     <button
       className={classes.walletBtn}
-      onClick={address ? null : getNeo}
+      onClick={address.key ? null : getNeo}
     >
       <div>
-        {address ? truncateAddress(address) : "Connect Neo Wallet"}
+        {address.key ? truncateAddress(address.key) : "Connect Neo Wallet"}
       </div>
     </button>
   );
 }
 
-const truncateAddress = (address) => {
-  return address.slice(0, 6) + "..." + address.slice(-4);
+const truncateAddress = (account) => {
+  return account.slice(0, 6) + "..." + account.slice(-4);
 };
 
 const useStyles = makeStyles((theme) => ({

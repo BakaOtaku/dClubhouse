@@ -11,6 +11,7 @@ import Form from "@components/Form";
 import Navbar from "@components/Navbar";
 import { connectToDatabase } from "@utils/db";
 import { userContext } from "@contexts/userContext";
+import { neoContext } from "@contexts/neoContext";
 // material ui
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
@@ -39,6 +40,13 @@ const Room = ({ roomDetails }) => {
   const isAdmin = Boolean(userRef.current);
   const socketRef = useRef();
   const [tempPromoted, setTempPromoted] = useState();
+
+  const { isAuth } = useContext(neoContext);
+  useEffect(() => {
+    if (!isAuth) {
+      window.location = "/";
+    }
+  }, [isAuth])
 
   const promote = (id) => {
     if (isAdmin) {
@@ -146,7 +154,7 @@ const Room = ({ roomDetails }) => {
 
   useEffect(() => {
     const roomId = new URLSearchParams(window.location.search).get("roomid");
-    const socket = io("http://198.199.90.165");
+    const socket = io("http://localhost:80");
     socketRef.current = socket;
     const signalClient = new SimpleSignalClient(socket);
 
@@ -175,11 +183,8 @@ const Room = ({ roomDetails }) => {
       </Head>
       <Navbar />
       <section className={classes.boxContainer}>
-        <h1 className={classes.title}>Room Name</h1>
+        <h1 className={classes.title}>Fun Channel</h1>
         <hr className={classes.break} />
-        <div className={classes.descText}>
-          Room ka description
-        </div>
 
         {toggleSettings && (
           <div className="settings">
@@ -219,6 +224,7 @@ const Room = ({ roomDetails }) => {
                   {str.isAdmin ? "👑" : str.name[0]}
                 </div>
                 <p>{str.name}</p>
+                {/* <p>{ind === 0 ? "NdfY...hqrP" : "NUqs...tgWj"}</p> */}
               </div>
             ))}
         </div>
@@ -235,6 +241,7 @@ const Room = ({ roomDetails }) => {
                   {str.name[0]}
                 </div>
                 <p>{str.name}</p>
+                {/* <p>{ind === 0 ? "NdfY...hqrP" : "NUqs...tgWj"}</p> */}
               </div>
             ))}
           {/* {members.filter((s) => !s.speaker).length === 0 && "No one is here."} */}
@@ -324,6 +331,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 50,
     background: "linear-gradient(to right, rgb(80, 250, 123), rgb(21, 101, 192))",
     padding: "1.25rem 1.25rem 60px",
+
+    "&:nth-child(1)": {
+      background: "url('/1.jpg')",
+      backgroundSize: 'contain',
+    },
+    "&:nth-child(1)": {
+      background: "url('/2.jpg')",
+      backgroundSize: 'contain',
+    },
   },
 
   bottom: {

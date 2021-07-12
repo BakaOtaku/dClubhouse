@@ -5,21 +5,42 @@ export const neoContext = createContext();
 
 export default function Neo({ children }) {
   const [neoLine, setNeoLine] = useState(null);
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState({});
+  const [userNft, setUserNft] = useState('');
+  const [isAuth, setIsAuth] = useState(false);
 
-  // const updateContractsState = async () => {
-  //   const neoLineObj = await NeoLineN3Init();
-  //   setNeoLine(neoLineObj);
-  // };
   const initNeoLine = async () => {
     console.info('initializing neoline...');
     const neoLineObj = await NeoLineN3Init();
     setNeoLine(neoLineObj);
 
     const addr = await neoLineObj.getPublicKey();
-    setAddress(addr.address);
-    console.info(addr);
-    // window.addEventListener('NEOLine.NEO.EVENT.BLOCK_HEIGHT_CHANGED', updateContractsState, true);
+    const { scriptHash: publicKey } = await neoLineObj.AddressToScriptHash({ address: addr.address });
+    setAddress({
+      key: addr.address,
+      publicKey
+    });
+    console.info("Address found", address);
+
+    const { stack } = await neoLineObj.invokeRead({
+      scriptHash: "0xbe8c210d1104070b998d8aaf35e4f9e085b5c2dc",
+      operation: "getOwnerNftDetails",
+      args: [
+        {
+          type: "Address",
+          value: addr.address
+        }
+      ],
+      signers: []
+    });
+    if (stack[0].value) {
+      const bal = atob(stack[0].value);
+      console.info("ownerNFT", bal);
+      setIsAuth(true);
+      setUserNft(bal);
+    } else {
+      setIsAuth(false);
+    }
   };
 
   useEffect(() => {
@@ -37,7 +58,7 @@ export default function Neo({ children }) {
   }, []);
 
   return (
-    <neoContext.Provider value={{ neoLine, address }}>
+    <neoContext.Provider value={{ neoLine, address, isAuth, userNft }}>
       {children}
     </neoContext.Provider>
   );
