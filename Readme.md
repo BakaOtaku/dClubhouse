@@ -76,6 +76,48 @@ Create a membership marketplace using WSK NEP-17 tokens
 
 Give exclusive memberships like more room capacity, exclusive joining for users staking more tokens.
 
+### How to set up?
+
+Genesis private key for testing
+
+```
+KwPMakChCEpGHtc919QvJcaHpwjD7KR8XcwZe15NK6AQGbe41VkX
+```
+
+Client Set Up
+
+```bash
+# git clone
+cd client
+# create and addd env variables
+vim .env.local
+# add variables
+MONGO_URI=mongodb+srv:// userid : pass @ url /myFirstDatabase?retryWrites=true&w=majority
+MONGO_DB=clubhouse
+```
+
+```bash
+yarn
+yarn run dev
+```
+
+Setting up backend 
+
+```bash
+# git clone
+cd backend
+# create and addd env variables
+vim .env
+# add variables
+MONGO_URI=mongodb+srv:// userid : pass @ url /myFirstDatabase?retryWrites=true&w=majority
+MONGO_DB=clubhouse
+```
+
+```bash
+docker build -t back .
+docker run -p 80:80
+```
+
 ### Team
 
 - [ 👨🏻‍🎓 Arpit Srivastava](https://github.com/fuzious)
