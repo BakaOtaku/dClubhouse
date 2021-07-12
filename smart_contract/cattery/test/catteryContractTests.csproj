@@ -1,0 +1,66 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <NeoContractManifestPath>..\src\bin\sc\catteryContract.manifest.json</NeoContractManifestPath>
+    <NeoTestPackagesVersion>1.0.37-preview</NeoTestPackagesVersion>
+    <RootNamespace>catteryTests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\catteryContract.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="3.0.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
+    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="Neo.Assertions" Version="$(NeoTestPackagesVersion)" />
+    <PackageReference Include="Neo.BuildTasks" Version="$(NeoTestPackagesVersion)" PrivateAssets="All" />
+    <PackageReference Include="Neo.Test.Harness" Version="$(NeoTestPackagesVersion)" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <Target Name="ConfigureNeoContractInterface" BeforeTargets="ExecuteNeoContractInterface">
+    <PropertyGroup>
+      <_NeoContractManifestPath>$([MSBuild]::NormalizePath('$(MSBuildProjectDirectory)', '$(NeoContractManifestPath)'))</_NeoContractManifestPath>
+      <_NeoContractInterfacePath>$([MSBuild]::NormalizePath('$(IntermediateOutputPath)', 'contract-interface.cs'))</_NeoContractInterfacePath>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Include="$(_NeoContractInterfacePath)" />
+    </ItemGroup>
+  </Target>
+
+  <Target 
+    Name="ExecuteNeoContractInterface" 
+    BeforeTargets="ResolveProjectReferences"
+    Inputs="$(_NeoContractManifestPath)"
+    Outputs="$(_NeoContractInterfacePath)">
+    <NeoContractInterface 
+      ManifestFile="$(_NeoContractManifestPath)" 
+      OutputFile="$(_NeoContractInterfacePath)" 
+      RootNamespace="$(RootNamespace)"/>
+  </Target>
+
+  <Target 
+    Name="ExecuteCreateNeoExpressInstance" 
+    AfterTargets="Build" 
+    Inputs="$(MSBuildProjectFullPath);@(Compile);" 
+    Outputs="$(ProjectDir)/bin/catteryTests.neo-express">
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet neoxp create -f bin/catteryTests.neo-express" />
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet neoxp wallet create -i bin/catteryTests.neo-express owner" />
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet neoxp wallet create -i bin/catteryTests.neo-express alice" />
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet neoxp wallet create -i bin/catteryTests.neo-express bob" />
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet neoxp batch -i bin/catteryTests.neo-express setup-test-chain.batch" />
+  </Target>
+
+</Project>

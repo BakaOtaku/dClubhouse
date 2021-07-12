@@ -1,0 +1,99 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Aniket_Pc\\Desktop\\cattery\\contracts\\cattery\\test\\catteryContractTests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Aniket_Pc\\Desktop\\cattery\\contracts\\cattery\\test\\catteryContractTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Aniket_Pc\\Desktop\\cattery\\contracts\\cattery\\test\\catteryContractTests.csproj",
+        "projectName": "catteryContractTests",
+        "projectPath": "C:\\Users\\Aniket_Pc\\Desktop\\cattery\\contracts\\cattery\\test\\catteryContractTests.csproj",
+        "packagesPath": "C:\\Users\\Aniket_Pc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aniket_Pc\\Desktop\\cattery\\contracts\\cattery\\test\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Aniket_Pc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.9.1, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.16.1, )"
+            },
+            "Neo.Assertions": {
+              "target": "Package",
+              "version": "[1.0.37-preview, )"
+            },
+            "Neo.BuildTasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.37-preview, )"
+            },
+            "Neo.Test.Harness": {
+              "target": "Package",
+              "version": "[1.0.37-preview, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.3, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

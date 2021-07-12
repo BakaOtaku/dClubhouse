@@ -1,0 +1,12 @@
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\bin\Debug\net5.0\catteryContract.deps.json
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\bin\Debug\net5.0\catteryContract.dll
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\bin\Debug\net5.0\ref\catteryContract.dll
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\bin\Debug\net5.0\catteryContract.pdb
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\obj\Debug\net5.0\catteryContract.csproj.AssemblyReference.cache
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\obj\Debug\net5.0\catteryContract.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\obj\Debug\net5.0\catteryContract.AssemblyInfoInputs.cache
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\obj\Debug\net5.0\catteryContract.AssemblyInfo.cs
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\obj\Debug\net5.0\catteryContract.csproj.CoreCompileInputs.cache
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\obj\Debug\net5.0\catteryContract.dll
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\obj\Debug\net5.0\ref\catteryContract.dll
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\src\obj\Debug\net5.0\catteryContract.pdb

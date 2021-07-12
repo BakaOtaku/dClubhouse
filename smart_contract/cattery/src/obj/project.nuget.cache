@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "QyzNc6bsdgkom3lhaXVbO/QbZb76tWs8pLT63te7I7VtSOpNhmyLIyZcYP09/lOInZ0rh6zdbR6m7U2dzkaM2A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Aniket_Pc\\Desktop\\cattery\\contracts\\cattery\\src\\catteryContract.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Aniket_Pc\\.nuget\\packages\\neo.smartcontract.framework\\3.0.0-rc3\\neo.smartcontract.framework.3.0.0-rc3.nupkg.sha512"
+  ],
+  "logs": []
+}

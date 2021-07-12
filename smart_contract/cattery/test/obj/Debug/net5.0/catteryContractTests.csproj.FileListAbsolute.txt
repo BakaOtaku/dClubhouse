@@ -1,0 +1,6 @@
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\test\bin\Debug\net5.0\CoverletSourceRootsMapping
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\test\obj\Debug\net5.0\catteryContractTests.csproj.AssemblyReference.cache
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\test\obj\Debug\net5.0\catteryContractTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\test\obj\Debug\net5.0\catteryContractTests.AssemblyInfoInputs.cache
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\test\obj\Debug\net5.0\catteryContractTests.AssemblyInfo.cs
+C:\Users\Aniket_Pc\Desktop\cattery\contracts\cattery\test\obj\Debug\net5.0\catteryContractTests.csproj.CoreCompileInputs.cache
