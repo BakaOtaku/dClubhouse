@@ -52,7 +52,7 @@ We will have a limited supply of Whisker (WSK) NEP-17 tokens which any invitee w
 		<li>Mongodb</li>
 </ul>
 
-<summary>Backend (JS server)</summary>
+<summary>Backend (Python server)</summary>
 <ul>
 	  <li>Keras / Tensorflow</li>
 		<li>GAN Machine Learning Model</li>
